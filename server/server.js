@@ -5,6 +5,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const { Resend } = require("resend");
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const app = express();
 
@@ -18,15 +19,7 @@ app.use(
 );
 app.use(express.json());
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 
-transporter.verify(function (error, success) {
-	if (error) {
-		console.error("SMTP VERIFY ERROR:", error);
-	} else {
-		console.log("SMTP Server is ready.");
-	}
-});
 
 app.get("/", (req, res) => {
 	res.json({
