@@ -18,7 +18,7 @@ app.use(
 );
 app.use(express.json());
 
-const resend = new Resend(process.env.re_S6Tjc2vx_HuKrX9miSTYwMqBjacX7pEKR);
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 transporter.verify(function (error, success) {
 	if (error) {
