@@ -20,7 +20,10 @@ const transporter = nodemailer.createTransport({
 });
 
 app.get("/", (req, res) => {
-	res.send("Portfolio API is running 🚀");
+    res.json({
+        success: true,
+        message: "Portfolio API is running 🚀",
+    });
 });
 
 app.post("/api/contact", async (req, res) => {
