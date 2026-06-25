@@ -10,7 +10,7 @@ const app = express();
 
 app.use(
 	cors({
-		origin: ["http://localhost:5173", "https://YOUR-NETLIFY-SITE.netlify.app"],
+		origin: ["http://localhost:5173", "https://aditya-portfolio1108.netlify.app"],
 	}),
 );
 app.use(express.json());
