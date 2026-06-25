@@ -25,6 +25,14 @@ const transporter = nodemailer.createTransport({
     },
 });
 
+transporter.verify(function (error, success) {
+	if (error) {
+		console.error("SMTP VERIFY ERROR:", error);
+	} else {
+		console.log("SMTP Server is ready.");
+	}
+});
+
 app.get("/", (req, res) => {
 	res.json({
 		success: true,
