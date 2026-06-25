@@ -4,26 +4,21 @@ require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
-const nodemailer = require("nodemailer");
+const { Resend } = require("resend");
 
 const app = express();
 
 app.use(
 	cors({
-		origin: ["http://localhost:5173", "https://aditya-portfolio1108.netlify.app"],
+		origin: [
+			"http://localhost:5173",
+			"https://aditya-portfolio1108.netlify.app",
+		],
 	}),
 );
 app.use(express.json());
 
-const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false,
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-    },
-});
+const resend = new Resend(process.env.re_S6Tjc2vx_HuKrX9miSTYwMqBjacX7pEKR);
 
 transporter.verify(function (error, success) {
 	if (error) {
@@ -51,22 +46,28 @@ app.post("/api/contact", async (req, res) => {
 			});
 		}
 
-		await transporter.sendMail({
-			from: process.env.EMAIL_USER,
+		await resend.emails.send({
+			from: "Portfolio <onboarding@resend.dev>",
+
 			to: process.env.EMAIL_USER,
+
 			replyTo: email,
+
 			subject: `Portfolio Contact - ${name}`,
+
 			html: `
-                <h2>New Portfolio Contact</h2>
 
-                <p><strong>Name:</strong> ${name}</p>
+        <h2>New Portfolio Contact</h2>
 
-                <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Name:</strong> ${name}</p>
 
-                <p><strong>Message:</strong></p>
+        <p><strong>Email:</strong> ${email}</p>
 
-                <p>${message}</p>
-            `,
+        <p><strong>Message:</strong></p>
+
+        <p>${message}</p>
+
+    `,
 		});
 
 		res.json({
