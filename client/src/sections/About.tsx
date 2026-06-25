@@ -103,7 +103,7 @@ function About() {
                         hover:-translate-y-1
                         hover:bg-white/10"
 						>
-							☕ Coffee + Code
+							☕ Chai + Code
 						</div>
 					</div>
 
