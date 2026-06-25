@@ -89,7 +89,7 @@ function About() {
                             hover:-translate-y-1
                             hover:bg-white/10"
 						>
-							🚀 Looking for Internship Opportunities
+							🚀 Looking for Fulltime / Internship /Freelance / Contract
 						</div>
 
 						<div

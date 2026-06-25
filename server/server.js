@@ -8,7 +8,11 @@ const nodemailer = require("nodemailer");
 
 const app = express();
 
-app.use(cors());
+app.use(
+	cors({
+		origin: ["http://localhost:5173", "https://YOUR-NETLIFY-SITE.netlify.app"],
+	}),
+);
 app.use(express.json());
 
 const transporter = nodemailer.createTransport({
@@ -20,10 +24,10 @@ const transporter = nodemailer.createTransport({
 });
 
 app.get("/", (req, res) => {
-    res.json({
-        success: true,
-        message: "Portfolio API is running 🚀",
-    });
+	res.json({
+		success: true,
+		message: "Portfolio API is running 🚀",
+	});
 });
 
 app.post("/api/contact", async (req, res) => {
