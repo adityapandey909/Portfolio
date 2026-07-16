@@ -12,9 +12,9 @@ function Experience() {
 				"Completed Full Stack Java Developer training and built projects using Java and web technologies.",
 		},
 		{
-			year: "2025",
+			year: "2026 - Present",
 			title: "MCA Student",
-			company: "Rungta International Skills University",
+			company: "Amity University, Bengaluru",
 			description:
 				"Pursuing MCA while focusing on React, Node.js, TypeScript and modern web development.",
 		},
